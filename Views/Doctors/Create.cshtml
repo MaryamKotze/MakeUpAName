@@ -1,0 +1,47 @@
+﻿@model MakeUpAName.Models.PatientIntake.Doctor
+<h2>Create Doctor</h2>
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IdentificationNumber"></label>
+        <input asp-for="IdentificationNumber" class="form-control" />
+        <span asp-validation-for="IdentificationNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CellphoneNumber"></label>
+        <input asp-for="CellphoneNumber" class="form-control" />
+        <span asp-validation-for="CellphoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="OfficeNumber"></label>
+        <input asp-for="OfficeNumber" class="form-control" />
+        <span asp-validation-for="OfficeNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Qualifications"></label>
+        <input asp-for="Qualifications" class="form-control" />
+        <span asp-validation-for="Qualifications" class="text-danger"></span>
+    </div>
+    <!-- Add a dropdown list for selecting the department -->
+    <div class="form-group">
+        <label asp-for="DepartmentId" class="control-label"></label>
+        <select asp-for="DepartmentId" asp-items="@(new SelectList(ViewBag.Departments,
+"Value", "Text"))" class="form-control">
+            <option value="">Select Department</option>
+        </select>
+        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+    </div>
+    <!-- Add more input fields for other doctor properties as needed -->
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>

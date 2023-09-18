@@ -1,0 +1,29 @@
+﻿@model IEnumerable<MakeUpAName.Models.PatientIntake.Department>
+<h2>Departments</h2>
+<p>
+    <a asp-action="Create" class="btn btn-success">Add New Department</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Department Id</th>
+            <th>Department Name</th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var department in Model)
+        {
+            <tr>
+                <td>@department.DepartmentId</td>
+                <th>@department.Name</th>
+
+                <td>
+
+                    <a asp-action="Delete" asp-route-id="@department.DepartmentId" class="btn btndanger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

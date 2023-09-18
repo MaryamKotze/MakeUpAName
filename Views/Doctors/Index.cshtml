@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MakeUpAName.Models.PatientIntake.Doctor>
+<h2>Doctors</h2>
+<p>
+    <a asp-action="Create" class="btn btn-success">Add New Doctor</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Doctor Name</th>
+            <th>Identification Number</th>
+            <th>Email</th>
+            <th>Cellphone</th>
+            <th>Office number</th>
+            <th>Qualifications</th>
+            <th>Department</th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doctor in Model)
+        {
+            <tr>
+                <td>@doctor.Name</td>
+                <th>@doctor.IdentificationNumber</th>
+                <th>@doctor.Email</th>
+                <th>@doctor.CellphoneNumber</th>
+                <th>@doctor.OfficeNumber</th>
+                <th>@doctor.Qualifications</th>
+                <td>@doctor.Department.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@doctor.DoctorId" class="btn btnprimary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@doctor.DoctorId" class="btn btndanger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

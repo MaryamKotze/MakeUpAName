@@ -1,0 +1,92 @@
+﻿@model MakeUpAName.Models.PatientIntake.Patient
+@{
+    ViewData["Title"] = "Create Patient";
+}
+<h2>Create Patient</h2>
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label">Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Phone" class="control-label">Phone</label>
+        <input asp-for="Phone" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Bloodtype">Blood Type:</label>
+        <div>
+            <label><input type="checkbox" asp-for="IsBloodTypeA" /> A</label>
+            <label><input type="checkbox" asp-for="IsBloodTypeB" /> B</label>
+            <label><input type="checkbox" asp-for="IsBloodTypeAB" /> AB</label>
+            <label><input type="checkbox" asp-for="IsBloodTypeO" /> O</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Diagnosis" class="control-label">Diagnosis</label>
+        <input asp-for="Diagnosis" class="form-control" />
+        <span asp-validation-for="Diagnosis" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Medications" class="control-label">Medications</label>
+        <input asp-for="Medications" class="form-control" />
+        <span asp-validation-for="Medications" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AdditionalNotes" class="control-label">Additional Notes</label>
+        <input asp-for="AdditionalNotes" class="form-control" />
+        <span asp-validation-for="AdditionalNotes" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SelectedDepartmentId" class="control-label">Department</label>
+        @foreach (var department in Model.DepartmentOptions)
+        {
+            <div class="form-check">
+                <input asp-for="SelectedDepartmentId" type="radio" class="form-check-input"
+                       value="@department.Value" id="@department.Value" name="SelectedDepartmentId" />
+                <label class="form-check-label" for="@department.Value">@department.Text</label>
+            </div>
+        }
+        <span asp-validation-for="SelectedDepartmentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SelectedDoctorId" class="control-label">Doctor</label>
+        <select asp-for="SelectedDoctorId" class="form-control" aspitems="Model.DoctorOptions">
+            <option value="">Select a Doctor</option>
+        </select>
+        <span asp-validation-for="SelectedDoctorId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SelectedRoomId" class="control-label">Room</label>
+        <select asp-for="SelectedRoomId" class="form-control" asp-items="Model.RoomOptions">
+            <option value="">Select a Room</option>
+        </select>
+        <span asp-validation-for="SelectedRoomId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SelectedBedId" class="control-label">Bed</label>
+        <select asp-for="SelectedBedId" class="form-control" asp-items="Model.BedOptions">
+            <option value="">Select a Bed</option>
+        </select>
+        <span asp-validation-for="SelectedBedId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LocationId" class="control-label">Location</label>
+        <select asp-for="LocationId" class="form-control" asp-items="Model.LocationOptions">
+            <option value="">Select a Location</option>
+        </select>
+        <span asp-validation-for="LocationId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+@section Scripts {
+    <script src="~/js/create-patient.js"></script>
+}

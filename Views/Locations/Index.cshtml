@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MakeUpAName.Models.PatientIntake.Location>
+<h2>Locations</h2>
+<p>
+ <a asp-action="Create" class="btn btn-success">Add New Location</a>
+</p>
+<table class="table">
+ <thead>
+ <tr>
+ <th>Location Id</th>
+ <th>Location Name</th>
+ <th>Actions</th>
+ </tr>
+ </thead>
+ <tbody>
+ @foreach (var location in Model)
+ {
+ <tr>
+ <td>@location.LocationId</td>
+ <th>@location.locationName</th>
+ <td>
+ <a asp-action="Delete" asp-route-id="@location.LocationId" class="btn btndanger">Delete</a>
+ </td>
+ </tr>
+ }
+ </tbody>
+</table>

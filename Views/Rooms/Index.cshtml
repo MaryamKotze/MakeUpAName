@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MakeUpAName.Models.PatientIntake.RoomBedViewModel>
+<h2>Rooms</h2>
+<p>
+    <a asp-action="Create" class="btn btn-success">Add New Room</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Room number</th>
+            <th>Bed number</th>
+            <th>Occupied</th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var roomBedView in Model)
+        {
+            <tr>
+                <td>@roomBedView.Room.RoomNo</td>
+                <th>@roomBedView.Bed.BedNo</th>
+                <th>@roomBedView.Bed.IsOccupied</th>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@roomBedView.Room.RoomId" class="btn btnprimary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@roomBedView.Room.RoomId" class="btn
+btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

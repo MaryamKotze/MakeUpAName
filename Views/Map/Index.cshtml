@@ -1,0 +1,81 @@
+﻿@model MakeUpAName.Models.PatientIntake.LocationViewModel
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Patient Locations</title>
+ <style>
+ /* Define CSS styles for the map container and buttons */
+ .map-container {
+ position: relative;
+ }
+ .map-button {
+ position: absolute;
+ background-color: #007bff;
+ color: #fff;
+ border: none;
+ padding: 10px 15px;
+ cursor: pointer;
+ }
+ </style>
+</head>
+<body>
+ @foreach (var location in Model.Locations)
+ {
+ <div class="map-container">
+ <img src="path-to-your-map-image.jpg" alt="Map Image" />
+ <!-- Create a button for the location -->
+ <button class="map-button" data-location-id="@location.LocationId" style="left: 
+@location.LeftCoordinate; top: @location.TopCoordinate;">@location.locationName</button>
+ <!-- Display patients for this location -->
+ <div id="patient-list-@location.LocationId" class="patient-list">
+ <h3>List of Patients at @location.locationName:</h3>
+ <div class="patient-list-content">
+ @Html.Partial("_PatientListPartial", Model.Patients.Where(p => p.LocationId == 
+location.LocationId).ToList())
+ </div>
+ </div>
+ </div>
+ }
+ <!-- JavaScript to handle patient list display and movement -->
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script>$(document).ready(function () {
+ $(".map-button").on("click", function () {
+ var locationId = $(this).data("location-id");
+ // Load and display the patient list for the selected location
+ $.ajax({
+ type: "GET",
+ url: "/Home/GetPatientsByLocation",
+ data: { locationId: locationId },
+ success: function (data) {
+ $("#patient-list-" + locationId + " .patient-list-content").html(data);
+ },
+ error: function () {
+ alert("An error occurred while fetching patient data.");
+ }
+ });
+ // Handle patient movement (simplified example)
+ $(".move-patient-button").on("click", function () {
+ var patientId = $(this).data("patient-id");
+ var newLocationId = /* Get the newly selected location ID */;
+ // Send an AJAX request to update the patient's location in the database
+ $.ajax({
+ type: "POST",
+ url: "/Home/MovePatient",
+ data: { patientId: patientId, newLocationId: newLocationId },
+ success: function (result) {
+ if (result.success) {
+ // Reload or update the patient list for the old and new locations
+ window.location.reload();
+ } else {
+ alert("Failed to move patient.");
+ }
+ },
+ error: function () {
+ alert("An error occurred during the move.");
+ }
+ });
+ });
+ });
+ });</script>
+</body>
+</html>

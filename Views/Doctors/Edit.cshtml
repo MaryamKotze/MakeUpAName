@@ -1,0 +1,49 @@
+﻿@model MakeUpAName.Models.PatientIntake.Doctor
+<h2>Edit Doctor</h2>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="DoctorId" />
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IdentificationNumber"></label>
+        <input asp-for="IdentificationNumber" class="form-control" />
+        <span asp-validation-for="IdentificationNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CellphoneNumber"></label>
+        <input asp-for="CellphoneNumber" class="form-control" />
+        <span asp-validation-for="CellphoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="OfficeNumber"></label>
+        <input asp-for="OfficeNumber" class="form-control" />
+        <span asp-validation-for="OfficeNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Qualifications"></label>
+        <input asp-for="Qualifications" class="form-control" />
+        <span asp-validation-for="Qualifications" class="text-danger"></span>
+    </div>
+    <!-- Add other doctor properties here -->
+    <!-- Add a dropdown list for selecting the department -->
+    <div class="form-group">
+        <label asp-for="DepartmentId" class="control-label"></label>
+        <select asp-for="DepartmentId" asp-items="@(new SelectList(ViewBag.Departments,
+"Value", "Text"))" class="form-control">
+            <option value="">Select Department</option>
+        </select>
+        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</form>

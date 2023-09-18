@@ -1,0 +1,24 @@
+﻿@model MakeUpAName.Models.PatientIntake.Location
+<h2>Create Location</h2>
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="locationName" class="control-label"></label>
+        <input asp-for="locationName" class="form-control" />
+        <span asp-validation-for="locationName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TopCoordinate"></label>
+        <input asp-for="TopCoordinate" class="form-control" />
+        <span asp-validation-for="TopCoordinate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LeftCoordinate"></label>
+        <input asp-for="LeftCoordinate" class="form-control" />
+        <span asp-validation-for="LeftCoordinate" class="text-danger"></span>
+    </div>
+
+    <!-- Add more input fields for other doctor properties as needed -->
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>

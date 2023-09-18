@@ -1,0 +1,11 @@
+﻿@model MakeUpAName.Models.PatientIntake.LocationViewModel
+<ul>
+    @foreach (var patient in Model.Patients)
+    {
+        <li>
+            @patient.Name
+            <!-- Add an "Edit" button to select a new location for this patient -->
+            <button class="move-patient-button" data-patient-id="@patient.PatientId">Edit</button>
+        </li>
+    }
+</ul>

@@ -1,0 +1,18 @@
+﻿@model MakeUpAName.Models.PatientIntake.Doctor
+<h2>Create Doctor</h2>
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+
+    <!-- Add more input fields for other departments properties as needed -->
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+@section Scripts {
+    <script>// Optionally, you can add client-side validation or other scripts here.</script>
+}
